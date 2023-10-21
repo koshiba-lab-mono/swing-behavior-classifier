@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  deepsort:
+    build: ./deepsort/
+    container_name: deepsort
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    volumes:
+      - ./data/videos:/app/videos
+      - ./data/boxes:/app/outputs
+    command: python start.py
+    tty: true 
