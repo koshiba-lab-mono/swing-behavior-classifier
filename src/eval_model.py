@@ -69,5 +69,5 @@ def test_model(model_path: Path, deepsort_output_directory_path: Path):
 model_path = Path("./data/model/epoch_70_model.pth")
 deepsort_output_directory_path = Path("./data/boxes/sample")
 
-show_model_performance(model_path)
-# test_model(model_path, deepsort_output_directory_path)
+# show_model_performance(model_path)
+test_model(model_path, deepsort_output_directory_path)

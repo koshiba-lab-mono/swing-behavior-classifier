@@ -2,12 +2,9 @@ numpy
 pandas
 opencv-python
 matplotlib
-dacite
 tqdm
 scipy
 scikit-learn
-black
-isort
-torch 
+torch
 torchvision
 pillow==9.5.0

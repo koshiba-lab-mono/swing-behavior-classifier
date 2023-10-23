@@ -35,7 +35,7 @@ class TeacherDataset(data.Dataset):
         return teacher.image, teacher.label
 
 
-class ActionClassifier(nn.Module):  # ProgrammingClassifier
+class ActionClassifier(nn.Module):
     def __init__(self, pretrained_model_path: str = None):
         super().__init__()
 
@@ -121,7 +121,7 @@ def collate_fn(batch: list[tuple[torch.Tensor, int]]) -> tuple[torch.Tensor, tor
     for sample, t in batch:
         imgs.append(sample)
         labels.append(t)
-    return torch.stack(imgs).to("cuda"), torch.Tensor(labels).long().to("cuda")
+    return torch.stack(imgs).to(device), torch.Tensor(labels).long().to(device)
 
 
 def model_compile(
@@ -134,9 +134,6 @@ def model_compile(
     save_dir: Path,
     checkpoints: Sequence[int] | None = None,
 ) -> None:
-    """
-    毎回学習する際ののひな型を書くのが面倒なので関数にしたもの．モデルの入力が画像のみの時なら使える.
-    """
     os.makedirs(save_dir, exist_ok=True)
     checkpoints = [max_epoch] if checkpoints is None else checkpoints
 
